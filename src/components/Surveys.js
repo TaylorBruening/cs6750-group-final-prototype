@@ -19,7 +19,7 @@ const surveys = [
     code: 'CS6750-SU24',
     title: 'Redefining Survey Results: Your Feedback Matters!',
     status: 'published',
-    responses: 16,
+    responses: 13,
   },
   {
     id: 3,
