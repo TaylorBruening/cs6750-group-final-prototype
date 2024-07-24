@@ -1,0 +1,97 @@
+.surveys-container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+.add-new {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.surveys-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.surveys-table th,
+.surveys-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.surveys-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.btn {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.questions {
+  background-color: #28a745;
+  color: white;
+}
+
+.share {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.share-disabled {
+  background-color: #ccc;
+  color: white;
+  cursor: not-allowed;
+}
+
+.responses-active {
+  background-color: #ffc107;
+  color: white;
+}
+
+.responses-disabled {
+  background-color: #ccc;
+  color: white;
+  cursor: not-allowed;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.published {
+  color: green;
+}
+
+.status.unpublished {
+  color: red;
+}
+
+.nav-header {
+	font-size: 85%;
+	font-weight: normal;
+	letter-spacing: 1px;
+	color: #a2a9b1;
+	text-transform: uppercase;
+}
+
+.survey-title {
+	margin-top: 0;
+}
