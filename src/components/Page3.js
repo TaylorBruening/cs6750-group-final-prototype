@@ -12,7 +12,7 @@ function Page3() {
   }, []);
 
     if (loading) {
-      return <CircularProgress/>
+      return <CircularProgress sx={{"color":"#1997c6"}}/>
   }
 
   return (
