@@ -78,7 +78,7 @@ function App() {
                         flexGrow: 1,
                         p: 3,
                         display: 'flex',
-                        margin: '50px 200px 0 300px'
+                        margin: '50px 20px 0 300px'
                     }}
                 >
                     <Routes>

@@ -46,6 +46,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	/*display: block;*/
 	width: 100% !important;
 	height: 100px !important;
+	margin-bottom: 1rem;
 	padding: 0.5rem 0.75rem;
 	font-size: 0.9rem;
 	line-height: 1.25;
@@ -59,6 +60,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+
+.survey-name {
+	font-size: 36px;
+	font-weight: bold;
 }
 
 .survey-results-container {
@@ -85,4 +91,55 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	margin: 0 !important;
 	padding: 0 0 0 15px !important;
 	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	margin-bottom: 0.5rem;
+	font-family: inherit;
+	font-weight: 300;
+	line-height: 1.1;
+	color: inherit;
+}
+
+.UGH{
+	margin-bottom: 0 !important;
+}
+
+
+.UGH2{
+	margin-top: 0 !important;
+}
+
+.dashhead-titles {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e9ecef;
+	margin-bottom: 20px;
+}
+
+.dashhead-subtitle {
+	margin-top: 0;
+	margin-bottom: 5px;
+	font-weight: normal;
+	font-size: 85%;
+	color: #a2a9b1;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.dashhead-title {
+	margin-top: 0;
+}
+
+.col-sm-9 {
+	display: block;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 75%;
+	flex: 0 0 75%;
+	max-width: 75%;
+	position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
 }

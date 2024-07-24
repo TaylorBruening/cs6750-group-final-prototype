@@ -12,23 +12,29 @@ const SurveyResults = () => {
     }
 
     return (
-        <div className="survey-results-container">
-            <h1>{survey.title}</h1>
-            <p>Survey Description: {survey.description}</p>
-            <h2>CSV</h2>
-            <textarea className="form-control">{survey.csv}</textarea>
-            <h2>JSON</h2>
-            <textarea className="form-control">{JSON.stringify(survey.json, null, 2)}</textarea>
-            {survey.questions.map((question, index) => (
-                <div className="survey-question" key={index}>
-                    <div className="survey-question-text">{question}</div>
-                    <ol className="survey-ol">
-                        {survey.json.map((response, responseIndex) => (
-                            <li key={responseIndex}>{response[`Q${index + 1}`]}</li>
-                        ))}
-                    </ol>
-                </div>
-            ))}
+        <div className="col-sm-9 content">
+            <div className="dashhead-titles">
+                <h6 className="dashhead-subtitle">Surveys</h6>
+                <h2 className="dashhead-title">Survey Responses</h2>
+            </div>
+            <div className="survey-results-container">
+                <div className="survey-name">{survey.title}</div>
+                <div style={{marginBottom: "10px"}}>Survey Description: {survey.description}</div>
+                <h3 className="UGH">CSV</h3>
+                <textarea className="form-control">{survey.csv}</textarea>
+                <h3 className="UGH2">JSON</h3>
+                <textarea className="form-control">{JSON.stringify(survey.json, null, 2)}</textarea>
+                {survey.questions.map((question, index) => (
+                    <div className="survey-question" key={index}>
+                        <div className="survey-question-text">{question}</div>
+                        <ol className="survey-ol">
+                            {survey.json.map((response, responseIndex) => (
+                                <li key={responseIndex}>{response[`Q${index + 1}`]}</li>
+                            ))}
+                        </ol>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
