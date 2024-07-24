@@ -12,6 +12,7 @@
 .surveys-table td.options {
   white-space: nowrap;
   width: 300px; /* Adjust this value as needed */
+  padding: 10px;
 }
 
 button {
@@ -59,6 +60,10 @@ button {
   padding: 5px 10px;
   border: none;
   cursor: pointer;
+      border-radius: 0.25rem;
+  min-height: 35px !important;
+    display: inline-block;
+  text-decoration: none;
 }
 
 .edit {
@@ -88,6 +93,8 @@ button {
 }
 
 .responses-disabled {
+    border-radius: 0.25rem;
+  min-height: 50px;
   background-color: #efefef;;
   color: #acacac;
   cursor: not-allowed;

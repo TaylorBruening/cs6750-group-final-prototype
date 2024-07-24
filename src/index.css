@@ -103,11 +103,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .UGH{
 	margin-bottom: 0 !important;
+	font-size: 24px;
 }
 
 
 .UGH2{
-	margin-top: 0 !important;
+	margin: 0 !important;
+		font-size: 24px;
 }
 
 .dashhead-titles {
@@ -142,4 +144,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.course-code {
+	color: #888;
+	font-size: 12px;
+	text-transform: uppercase;
 }

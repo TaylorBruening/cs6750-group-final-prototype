@@ -83,7 +83,10 @@ const Surveys = () => {
                                     responses{survey.responses > 0 ? `(${survey.responses})` : ''}
                                 </Link>
                             </td>
-                            <td>{`${survey.course} ${survey.code}`}</td>
+                            <td>
+                                {survey.course}
+                                <div className="course-code">{survey.code}</div>
+                            </td>
                             <td>{survey.title}</td>
                             <td className={`status ${survey.status}`}>{survey.status}</td>
                         </tr>

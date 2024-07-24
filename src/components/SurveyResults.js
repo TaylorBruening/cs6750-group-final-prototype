@@ -5,9 +5,10 @@ import { surveyResults } from '../data/surveyResults';
 
 const SurveyResults = () => {
     const { id } = useParams();
-    const survey = surveyResults; // Normally, you would fetch or filter based on the ID
+    const surveyId = parseInt(id, 10);
+    const survey = surveyResults.find(s => s.id === surveyId);
 
-    if (!survey || survey.id !== parseInt(id)) {
+    if (!survey) {
         return <div>Survey not found</div>;
     }
 
