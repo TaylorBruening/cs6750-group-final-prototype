@@ -21,7 +21,7 @@ function App() {
                         [`& .MuiDrawer-paper`]: {
                             width: drawerWidth,
                             boxSizing: 'border-box',
-                            margin: '70px 0 0 400px',
+                            margin: '70px 0 0 300px',
                             border: 'none !important'
                         },
                     }}
@@ -41,7 +41,7 @@ function App() {
                         flexGrow: 1,
                         p: 3,
                         display: 'flex',
-                        margin: '50px 0 0 400px'
+                        margin: '50px 200px 0 300px'
                     }}
                 >
                     <Routes>

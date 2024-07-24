@@ -6,11 +6,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 20px 0;
+  margin: 0 0 5px 0;
+}
+
+.surveys-table td.options {
+  white-space: nowrap;
+  width: 300px; /* Adjust this value as needed */
+}
+
+button {
+  border-radius: 0.25rem;
+  min-height: 35px;
+  font-size: 14px;
 }
 
 .add-new {
-  background-color: #28a745;
+  background-color: #1BC98E;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -24,12 +35,22 @@
 
 .surveys-table th,
 .surveys-table td {
-  border: 1px solid #ddd;
+  border: none;
+  padding: 8px;
+}
+.surveys-table td {
+  border-top: 2px solid #e9ecef;
   padding: 8px;
 }
 
+.ugh {
+    border-bottom: 1px solid #e9ecef;
+  margin-bottom: 15px;
+}
+
 .surveys-table th {
-  background-color: #f2f2f2;
+  border: none !important;
+  background-color: white;
   text-align: left;
 }
 
@@ -41,34 +62,34 @@
 }
 
 .edit {
-  background-color: #17a2b8;
+  background-color: #1997c6;
   color: white;
 }
 
 .questions {
-  background-color: #28a745;
+  background-color: #1BC98E;
   color: white;
 }
 
 .share {
-  background-color: #6f42c1;
+  background-color: #9F86FF;
   color: white;
 }
 
 .share-disabled {
-  background-color: #ccc;
-  color: white;
+  background-color: #efefef;;
+  color: #acacac;
   cursor: not-allowed;
 }
 
 .responses-active {
-  background-color: #ffc107;
+  background-color: #E4D836;
   color: white;
 }
 
 .responses-disabled {
-  background-color: #ccc;
-  color: white;
+  background-color: #efefef;;
+  color: #acacac;
   cursor: not-allowed;
 }
 

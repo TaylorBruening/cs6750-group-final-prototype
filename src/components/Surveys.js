@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Surveys.css';
 import CircularProgress from "@mui/material/CircularProgress";
+import {Helmet} from "react-helmet";
 
 const surveys = [
   {
@@ -17,7 +18,23 @@ const surveys = [
     code: 'CS6750-SU24',
     title: 'Redefining Survey Results: Your Feedback Matters!',
     status: 'published',
-    responses: 36,
+    responses: 16,
+  },
+  {
+    id: 3,
+    course: 'Natural Studies on Local Fauna',
+    code: 'NA6530-SP24',
+    title: 'A study on wild bears',
+    status: 'published',
+    responses: 10,
+  },
+  {
+    id: 4,
+    course: 'Natural Studies on Local Fauna',
+    code: 'NA6530-SP24',
+    title: "Can bears survive on honey alone? A survey",
+    status: 'published',
+    responses: 54,
   },
 ];
 
@@ -35,10 +52,15 @@ const Surveys = () => {
 
   return (
       <div className="surveys-container">
-        <div className="nav-header">SURVEYS</div>
-        <div className="header">
-          <h2 className="survey-title">Your Surveys</h2>
-          <button className="add-new">+ Add New</button>
+        <Helmet>
+        <title>Your Surveys</title>
+      </Helmet>
+        <div className="ugh">
+          <div className="nav-header">SURVEYS</div>
+          <div className="header">
+            <h2 className="survey-title">Your Surveys</h2>
+            <button className="add-new">+ Add New</button>
+          </div>
         </div>
         <table className="surveys-table">
           <thead>
@@ -52,7 +74,7 @@ const Surveys = () => {
           <tbody>
           {surveys.map((survey) => (
               <tr key={survey.id}>
-                <td>
+                <td className="options">
                   <button className="btn edit">edit</button>
                   <button className="btn questions">questions</button>
                   <button className={`btn ${survey.responses > 0 ? 'share' : 'share-disabled'}`}>share</button>
