@@ -16,7 +16,9 @@ const SurveyResults = () => {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF19A3', '#FFC019', '#19FFC8', '#197FFF', '#C119FF', '#FF1919', '#19FF91'];
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [chartTypes, setChartTypes] = useState(survey.questions.map(() => 'pie'));
+const [chartTypes, setChartTypes] = useState(
+  survey.questions.map((_, index) => index % 2 === 0 ? 'pie' : 'bar')
+);
 
     const getQuestionData = (questionIndex) => {
         const dataMap = {};

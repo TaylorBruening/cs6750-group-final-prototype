@@ -35,7 +35,7 @@ const surveys = [
     code: 'NA6530-SP24',
     title: "Can bears survive on honey alone? A survey",
     status: 'published',
-    responses: 54,
+    responses: 6,
   },
 ];
 
