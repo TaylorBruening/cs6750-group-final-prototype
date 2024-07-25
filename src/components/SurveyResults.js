@@ -14,22 +14,30 @@ const SurveyResults = () => {
     }
 
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF19A3', '#FFC019', '#19FFC8', '#197FFF', '#C119FF', '#FF1919', '#19FF91'];
+
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [chartType, setChartType] = useState('pie');
+    const [chartTypes, setChartTypes] = useState(survey.questions.map(() => 'pie'));
 
     const getQuestionData = (questionIndex) => {
         const dataMap = {};
         survey.json.forEach(response => {
-            const answer = response[`Q${questionIndex + 1}`];
-            if (!dataMap[answer]) {
-                dataMap[answer] = 0;
-            }
-            dataMap[answer] += 1;
+            const answers = response[`Q${questionIndex + 1}`].split(';');
+            answers.forEach(answer => {
+                const trimmedAnswer = answer.trim();
+                if (!dataMap[trimmedAnswer]) {
+                    dataMap[trimmedAnswer] = 0;
+                }
+                dataMap[trimmedAnswer] += 1;
+            });
         });
         return Object.keys(dataMap).map(key => ({ name: key, value: dataMap[key] }));
     };
 
-    const renderChart = (data) => {
+    const renderChart = (data, chartType) => {
+        if (data.length > 5) {
+            return null; // Return null if more than 5 distinct responses
+        }
+
         if (chartType === 'pie') {
             return (
                 <PieChart width={400} height={400}>
@@ -68,6 +76,12 @@ const SurveyResults = () => {
         }
     };
 
+    const handleChartTypeChange = (index, newType) => {
+        const newChartTypes = [...chartTypes];
+        newChartTypes[index] = newType;
+        setChartTypes(newChartTypes);
+    };
+
     return (
         <div className="col-sm-9 content">
             <div className="dashhead-titles">
@@ -81,28 +95,35 @@ const SurveyResults = () => {
                 <textarea className="form-control">{survey.csv}</textarea>
                 <h3 className="UGH2">JSON</h3>
                 <textarea className="form-control">{JSON.stringify(survey.json, null, 2)}</textarea>
-                <div>
-                    <label htmlFor="chartType">Select Chart Type: </label>
-                    <select id="chartType" value={chartType} onChange={e => setChartType(e.target.value)}>
-                        <option value="pie">Pie Chart</option>
-                        <option value="bar">Bar Chart</option>
-                    </select>
-                </div>
-                {survey.questions.map((question, index) => (
-                    <div className="survey-question" key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '20px', padding: 'none !important' }}>
-                        <div style={{ flex: 2, padding: 'none !important', marginRight: '-40px' }}>
-                            <div className="survey-question-text">{question}</div>
-                            <ol className="survey-ol">
-                                {survey.json.map((response, responseIndex) => (
-                                    <li key={responseIndex}>{response[`Q${index + 1}`]}</li>
-                                ))}
-                            </ol>
+                {survey.questions.map((question, index) => {
+                    const data = getQuestionData(index);
+                    const hasChart = data.length <= 5;
+
+                    return (
+                        <div className="survey-question" key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '20px', padding: 'none !important' }}>
+                            <div style={{ flex: 2, padding: 'none !important', marginRight: '-40px' }}>
+                                <div className="survey-question-text">{question}</div>
+                                <ol className="survey-ol">
+                                    {survey.json.map((response, responseIndex) => (
+                                        <li key={responseIndex}>{response[`Q${index + 1}`]}</li>
+                                    ))}
+                                </ol>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                {hasChart && (
+                                    <div>
+                                        <label htmlFor={`chartType-${index}`}>Select Chart Type: </label>
+                                        <select id={`chartType-${index}`} value={chartTypes[index]} onChange={e => handleChartTypeChange(index, e.target.value)}>
+                                            <option value="pie">Pie Chart</option>
+                                            <option value="bar">Bar Chart</option>
+                                        </select>
+                                    </div>
+                                )}
+                                {renderChart(data, chartTypes[index])}
+                            </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                            {renderChart(getQuestionData(index))}
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );
