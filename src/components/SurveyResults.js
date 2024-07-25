@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { surveyResults } from '../data/surveyResults';
-import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid, Treemap } from 'recharts';
 
 const SurveyResults = () => {
     const { id } = useParams();
@@ -65,13 +65,25 @@ const SurveyResults = () => {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    <Legend />
                     <Bar dataKey="value" fill="#8884d8">
                         {data.map((entry, idx) => (
                             <Cell key={`cell-${idx}`} fill={COLORS[idx % COLORS.length]} />
                         ))}
                     </Bar>
                 </BarChart>
+            );
+        } else if (chartType === 'treemap') {
+            return (
+                <Treemap
+                    width={450}
+                    height={400}
+                    data={data}
+                    dataKey="value"
+                    stroke="#fff"
+                    fill="#8884d8"
+                >
+                    <Tooltip />
+                </Treemap>
             );
         }
     };
@@ -90,7 +102,7 @@ const SurveyResults = () => {
             </div>
             <div className="survey-results-container">
                 <div className="survey-name">{survey.title}</div>
-                <div style={{ marginBottom: "10px" }}>Survey Description: {survey.description}</div>
+                <div style={{ marginBottom: "12px" }}>Survey Description: {survey.description}</div>
                 <h3 className="UGH">CSV</h3>
                 <textarea className="form-control">{survey.csv}</textarea>
                 <h3 className="UGH2">JSON</h3>
@@ -101,7 +113,7 @@ const SurveyResults = () => {
 
                     return (
                         <div className="survey-question" key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '20px', padding: 'none !important' }}>
-                            <div style={{ flex: 2, padding: 'none !important', marginRight: '-40px' }}>
+                            <div style={{ flex: 2, padding: 'none !important', marginRight: '-20px' }}>
                                 <div className="survey-question-text">{question}</div>
                                 <ol className="survey-ol">
                                     {survey.json.map((response, responseIndex) => (
@@ -109,13 +121,14 @@ const SurveyResults = () => {
                                     ))}
                                 </ol>
                             </div>
-                            <div style={{ flex: 1 }}>
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 {hasChart && (
-                                    <div>
+                                    <div align={'left'} style={{fontSize: '12px', margin: '10px 30px 0 0'}}>
                                         <label htmlFor={`chartType-${index}`}>Select Chart Type: </label>
-                                        <select id={`chartType-${index}`} value={chartTypes[index]} onChange={e => handleChartTypeChange(index, e.target.value)}>
-                                            <option value="pie">Pie Chart</option>
-                                            <option value="bar">Bar Chart</option>
+                                        <select id={`chartType-${index}`} value={chartTypes[index]} onChange={e => handleChartTypeChange(index, e.target.value)}  style={{fontSize: '12px'}}>
+                                            <option value="pie" style={{fontSize: '12px'}}>Pie Chart</option>
+                                            <option value="bar" style={{fontSize: '12px'}}>Bar Chart</option>
+                                            <option value="treemap" style={{fontSize: '12px'}}>Treemap</option>
                                         </select>
                                     </div>
                                 )}
